@@ -1,15 +1,17 @@
+require("dotenv").config();
+
 const express = require("express");
 const server = express();
 const cors = require("cors");
 const morgan = require("morgan");
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 500; //fallback in case next dev does not create .env file
+
+// const API_SECRET = process.env.API_SECRET;
 
 server.use(express.json());
 server.use(cors());
 server.use(morgan("dev"));
-
-console.log(process.env.USER);
 
 server.get("/", (req, res) => {
   res.send(`
